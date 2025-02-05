@@ -1,1 +1,32 @@
-#A simple text file
+🔹 3. Working with Pull Requests (PRs)
+Pull Requests (PRs) are used when working in teams or feature branches before merging code into main.
+
+Step 1: Create a New Branch
+Instead of working directly on main, create a new branch:
+git checkout -b new-feature
+(Replace new-feature with your branch name.)
+
+Step 2: Make Changes and Push to the New Branch
+After modifying code:
+git add .
+git commit -m "Added a new feature"
+git push origin new-feature
+
+Step 3: Create a Pull Request (PR)
+Go to your GitHub repository.
+You'll see a Compare & pull request button.
+Click it and write a description of your changes.
+Submit the PR for review.
+
+Step 4: Merge the PR into main
+Once reviewed, click "Merge pull request".
+After merging, delete the branch:
+
+git branch -d new-feature
+And switch back to main:
+git checkout main
+
+Step 5: Pull the Latest Merged Code
+git pull origin main
+This ensures your local main branch is up to date.
+
