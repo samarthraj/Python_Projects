@@ -1,0 +1,94 @@
+1. Importing Tkinter Components
+
+from tkinter import Tk, Entry, Button, StringVar, Label
+
+Tk - Creates the main window.
+Entry - Allows user input (display for the calculator).
+Button - Used for number and operation keys.
+StringVar - A special variable type that updates the GUI dynamically.
+Label - (Not used here) Typically displays text but isn’t needed in this case.
+
+StringVar() is a special Tkinter variable that notifies all linked widgets when its value changes.
+
+
+2. Creating the Calculator Class
+
+The Calculator class is used to group all the functions and UI elements together.
+master is the main Tkinter window (also called root when you create the instance).
+The __init__ function initializes the calculator’s window, buttons, and logic.
+
+3. Configuring the Main Window
+
+.title("Calculator") → Sets the window title.
+.geometry('357x420+0+0') → Sets window size (357px width, 420px height, positioned at (0,0) on the screen).
+.config(bg='gray') → Sets the background color.
+.resizable(False, False) → Prevents resizing.
+
+4. Setting Up the Entry Field
+
+self.equation = StringVar() → Stores and updates the user’s input dynamically.
+self.entry_value = '' → Stores the raw equation before evaluation.
+Entry(...) → Creates an input field where numbers and expressions will appear.
+textvariable=self.equation → Binds the Entry to self.equation, so whenever self.equation.set(value) is called, the Entry updates.
+
+self.entry_value -> This is a regular Python string that stores whatever the user inputs.
+Whenever you press a button (e.g., "5" or "+"), the corresponding value is added to this string.
+
+5. Creating the Buttons
+
+Button(...) → Creates a button.
+width=11, height=4 → Sets button size.
+text='1' → Displays "1" on the button.
+relief='flat' → Makes the button style flat (aesthetic choice).
+bg='white' → Button background color.
+command=lambda: self.show(1) → Calls self.show(1) when clicked.
+
+6. Handling Button Clicks
+
+Every time a button is clicked, self.show(value) is executed.
+self.entry_value += str(value) → Appends the button value to entry_value.
+self.equation.set(self.entry_value) → Updates the Entry field dynamically.
+
+7. Clearing the Input
+
+Resets self.entry_value to an empty string.
+Clears the input field by updating self.equation.
+
+8. Evaluating the Expression
+eval() is a built-in Python function.
+You don’t need to import it—it’s always available.
+Displays the result in the Entry field.s
+
+
+9. Running the Application
+
+Tk() creates the main window.
+Calculator(root) initializes the calculator.
+root.mainloop() starts the Tkinter event loop.
+
+Note, Look at the show method:
+When a button is clicked, it calls self.show(value), where value is the button's text (e.g., 1, +, .).
+self.entry_value += str(value) → Adds the clicked number/operator to the stored equation.
+self.equation.set(self.entry_value) → Updates the Entry field.
+So, self.entry_value stores the equation as a string, and Tkinter { StringVar()}updates the display accordingly.
+
+Why Use StringVar() Instead of entry.insert()?
+StringVar() automatically updates the Entry field without manual intervention.
+If multiple widgets (meaning lets say calculators) use the same StringVar(), they all update when the value changes.
+Makes code cleaner and easier to maintain.
+
+Q) What Happens When You Click a Button?
+Let's say you click 5, here's the flow:
+
+Tkinter detects the click event on the Button widget.
+It executes the function given in command=, which is lambda: self.show(5).
+self.show(5) gets called, which:
+Adds "5" to self.entry_value.
+Calls self.equation.set(self.entry_value), updating the Entry field.
+
+
+NOTE: Save and Exit (nano users - nano .gitignore)
+
+Press CTRL + X
+Press Y (Yes, to save changes)
+Press Enter
