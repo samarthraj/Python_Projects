@@ -1,0 +1,48 @@
+1. Importing Required Modules
+tkinter → Used to create the GUI (Graphical User Interface).
+messagebox → Provides pop-up alert boxes (for errors/messages).
+base64 → Used for encoding and decoding messages.
+os → Not used in your code but typically helps with file operations.
+
+
+message is originally a string (human-readable text).
+.encode("ascii") converts it into bytes where each character is represented using its ASCII binary equivalent.
+Base64 takes those bytes and encodes them into another set of characters.
+It does this by taking 6-bit chunks of binary data and mapping them to a set of 64 printable characters (A-Z, a-z, 0-9, +, /).
+The goal of Base64 is to make binary data printable and safe for transmission (e.g., sending over email, URLs).
+Base64-encoded data is not human-readable in bytes form.
+.decode("ascii") converts it back to a string so it can be stored, displayed, or sent as text.
+
+
+
+
+2. Defining the Encrypt/Decrypt Function
+password = code.get() Retrieves the secret key from the Entry widget using .get(). 
+what ever is entered in the entry widget is taken and sent to password which checks 
+
+Checks if the password is correct.
+Creates a new window (screen 1/2) for displaying the decrypted/encrypted message.
+
+4. Creating the Main Screen
+This function creates the main application window.
+Global keywords - These make variables global so they can be accessed in other functions.
+Creates the main Tkinter window with size 375×398 pixels.
+Loads an icon (keys.png) for the app window.
+Resets the input fields when the "RESET" button is clicked.
+
+5. Creating UI Elements
+Creates a label to describe the first text box.
+Creates the main input text box.
+Creates a label for the password entry box.
+Creates a password input box (hides text with show="*").
+StringVar() allows dynamic updates to the password field.
+
+6. Adding Buttons
+
+Creates an "ENCRYPT" button that runs encrypt() when clicked.
+Creates a "DECRYPT" button that runs decrypt().
+Creates a "RESET" button that runs reset().
+
+
+screen.mainloop()
+Starts the Tkinter event loop (keeps the window running).
